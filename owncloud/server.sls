@@ -26,6 +26,16 @@ owncloud_repo:
 
 {%- endif %}
 
+owncloud_install:
+  cmd.run:
+  - name: "php occ maintenance:install --no-interaction --database {{ server.database.type }} --database-host {{ server.database.host }} --database-name {{ server.database.name }} --database-user {{ server.database.user }} --database-pass {{ server.database.password }} --admin-user {{ server.admin.username }} --admin-pass {{ server.admin.password }} --data-dir {{ server.data }}"
+  - cwd: /var/www/owncloud
+  - user: {{ server.user }}
+  - shell: /bin/sh
+  - creates: /var/www/owncloud/config/config.php
+  - require:
+    - pkg: owncloud_packages
+
 owncloud_packages:
   pkg.installed:
   - names: {{ server.pkgs }}
@@ -46,8 +56,11 @@ owncloud_config:
   - name: /var/www/owncloud/config/config.php
   - source: salt://owncloud/files/config.php
   - template: jinja
+  - user: www-data
+  - group: root
+  - mode: 0640
   - require:
-    - pkg: owncloud_packages
+    - cmd: owncloud_install
     {%- if server.cache.enabled and server.cache.engine == 'memcache' %}
     - service: memcached_service
     {%- endif %}
