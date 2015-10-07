@@ -6,6 +6,24 @@ include:
 - apache
 {%- if server.cache.enabled and server.cache.engine == 'memcache' %}
 - memcached
+
+owncloud_php5_memcached:
+  pkg.installed:
+    - name: php5-memcached
+    - watch_in:
+      - service: apache_service
+{%- endif %}
+
+{%- if server.addrepo is defined and grains['os_family'] == 'Debian' %}
+
+owncloud_repo:
+  pkgrepo.managed:
+    - name: {{ server.pkg_repo }}
+    - file: {{ server.repo_file }}
+    - key_url: {{ server.key_url }}
+    - require_in:
+      - pkg: owncloud_packages
+
 {%- endif %}
 
 owncloud_packages:
@@ -15,9 +33,9 @@ owncloud_packages:
     - service: apache_service
 
 {# We are going to manage apache config on our own #}
-owncloud_apache_purge:
-  pkg.purged:
-  - name: owncloud-config-apache
+owncloud_apache_remove:
+  file.absent:
+  - name: /etc/apache2/conf-enabled/owncloud.conf
   - require:
     - pkg: owncloud_packages
   - watch_in:

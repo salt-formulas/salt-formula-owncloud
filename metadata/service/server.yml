@@ -4,6 +4,7 @@ parameters:
   owncloud:
     server:
       enabled: true
+      addrepo: true
       data: /var/www/owncloud/data
       database:
         type: mysql

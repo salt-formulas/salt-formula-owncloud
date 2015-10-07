@@ -3,5 +3,15 @@
         'pkgs': ['owncloud'],
         'user': 'www-data',
         'group': 'www-data',
+        'repo_file': '/etc/apt/sources.list.d/owncloud.list',
     },
-}, merge=salt['pillar.get']('owncloud:server')) %}
+}, merge=salt['grains.filter_by']({
+    'trusty': {
+        'pkg_repo':  'deb http://download.opensuse.org/repositories/isv:/ownCloud:/community/xUbuntu_14.04/ /',
+        'key_url': 'http://download.opensuse.org/repositories/isv:ownCloud:community/xUbuntu_14.04/Release.key',
+    },
+    'jessie': {
+        'pkg_repo': 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/community/Debian_8.0/ /',
+        'key_url': 'http://download.opensuse.org/repositories/isv:ownCloud:community/Debian_8.0/Release.key',
+    },
+}, grain='oscodename', merge=salt['pillar.get']('owncloud:server'))) %}
