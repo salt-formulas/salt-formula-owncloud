@@ -27,5 +27,7 @@ parameters:
         engine: memcache
   apache:
     server:
+      enabled: true
       modules:
         - xsendfile
+        - php

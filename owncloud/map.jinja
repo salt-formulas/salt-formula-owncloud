@@ -1,5 +1,7 @@
 {% set server = salt['grains.filter_by']({
     'Debian': {
         'pkgs': ['owncloud'],
+        'user': 'www-data',
+        'group': 'www-data',
     },
 }, merge=salt['pillar.get']('owncloud:server')) %}

@@ -40,7 +40,7 @@ owncloud_config:
 owncloud_log:
   file.managed:
     - name: {{ server.logging.file }}
-    - owner: www-data
+    - owner: {{ server.user }}
     - group: adm
     - mode: 0640
 {%- endif %}
