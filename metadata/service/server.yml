@@ -1,0 +1,31 @@
+applications:
+  - owncloud
+parameters:
+  owncloud:
+    server:
+      enabled: true
+      data: /var/www/owncloud/data
+      database:
+        type: mysql
+        name: owncloud
+        host: localhost
+        user: owncloud
+      logging:
+        level: 1
+        type: owncloud
+        file: /var/log/owncloud.log
+        timezone: UTC
+      mail:
+        mode: php
+        from: owncloud
+      appstore:
+        enabled: true
+        url: "https://api.owncloud.com/v1"
+        experimental: false
+      cache:
+        enabled: false
+        engine: memcache
+  apache:
+    server:
+      modules:
+        - xsendfile
