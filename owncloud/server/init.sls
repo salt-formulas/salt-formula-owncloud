@@ -1,4 +1,4 @@
-{% from "owncloud/map.jinja" import server with context %}
+{%- from "owncloud/map.jinja" import server with context %}
 
 {%- if server.enabled %}
 
@@ -39,22 +39,6 @@ owncloud_apache_remove:
   - name: /etc/apache2/conf-enabled/owncloud.conf
   - require:
     - pkg: owncloud_packages
-  - watch_in:
-    - service: apache_service
-
-owncloud_config:
-  file.managed:
-  - name: /var/www/owncloud/config/config.php
-  - source: salt://owncloud/files/config.php
-  - template: jinja
-  - user: www-data
-  - group: root
-  - mode: 0640
-  - require:
-    - cmd: owncloud_install
-    {%- if server.cache.enabled and server.cache.engine == 'memcache' %}
-    - service: memcached_service
-    {%- endif %}
   - watch_in:
     - service: apache_service
 
