@@ -3,6 +3,7 @@
 {%- if server.enabled %}
 
 include:
+- owncloud.server.setup
 - apache
 {%- if server.cache.enabled and server.cache.engine == 'memcache' %}
 - memcached
@@ -25,22 +26,6 @@ owncloud_repo:
       - pkg: owncloud_packages
 
 {%- endif %}
-
-owncloud_install:
-  cmd.run:
-  - name: "php occ maintenance:install --no-interaction --database {{ server.database.type }} --database-host {{ server.database.host }} --database-name {{ server.database.name }} --database-user {{ server.database.user }} --database-pass {{ server.database.password }} --admin-user {{ server.admin.username }} --admin-pass {{ server.admin.password }} --data-dir {{ server.data }}"
-  - cwd: /var/www/owncloud
-  - user: {{ server.user }}
-  - shell: /bin/sh
-  - creates: /var/www/owncloud/config/config.php
-  - require:
-    - pkg: owncloud_packages
-
-owncloud_cron:
-  cron.present:
-    - name: "php -f /var/www/owncloud/cron.php > /dev/null 2>&1"
-    - user: {{ server.user }}
-    - minute: "*/15"
 
 owncloud_packages:
   pkg.installed:

@@ -15,7 +15,8 @@ $CONFIG = array (
   ),
   'datadirectory' => '{{ server.data }}',
   'overwrite.cli.url' => '{{ server.url }}',
-  // 'version' => '8.1.3.0',
+  {# TODO: hard-coded version, determine from package #}
+  'version' => '8.1.3.0',
   'dbtype' => '{{ server.database.type }}',
   'dbname' => '{{ server.database.name }}',
   'dbhost' => '{{ server.database.host }}',
