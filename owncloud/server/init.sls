@@ -15,7 +15,7 @@ owncloud_php5_memcached:
       - service: apache_service
 {%- endif %}
 
-{%- if server.addrepo is defined and grains['os_family'] == 'Debian' %}
+{%- if server.addrepo and grains['os_family'] == 'Debian' %}
 
 owncloud_repo:
   pkgrepo.managed:
