@@ -36,6 +36,12 @@ owncloud_install:
   - require:
     - pkg: owncloud_packages
 
+owncloud_cron:
+  cron.present:
+    - name: "php -f /var/www/owncloud/cron.php > /dev/null 2>&1"
+    - user: {{ server.user }}
+    - minute: "*/15"
+
 owncloud_packages:
   pkg.installed:
   - names: {{ server.pkgs }}
