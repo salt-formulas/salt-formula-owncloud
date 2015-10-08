@@ -28,7 +28,7 @@ owncloud_repo:
 {%- endif %}
 
 owncloud_data:
-  file.managed:
+  file.directory:
     - name: {{ server.data }}
     - owner: {{ server.user }}
     - group: {{ server.user }}
