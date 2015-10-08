@@ -6,7 +6,7 @@
 
 owncloud_user_{{ name }}:
   cmd.run:
-  - name: "php occ user:add --no-interaction --password-from-env --display-name '{{ user.name }}' {% if user.group is defined %}-g '{{ user.group }}'{% endif %} filip"
+  - name: "php occ user:add --no-interaction --password-from-env --display-name '{{ user.name }}' {% if user.group is defined %}-g '{{ user.group }}'{% endif %} {{ name }}"
   - cwd: /var/www/owncloud
   - user: {{ server.user }}
   - shell: /bin/sh
