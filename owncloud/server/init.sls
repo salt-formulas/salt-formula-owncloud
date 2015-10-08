@@ -27,6 +27,15 @@ owncloud_repo:
 
 {%- endif %}
 
+owncloud_data:
+  file.managed:
+    - name: {{ server.data }}
+    - owner: {{ server.user }}
+    - group: {{ server.user }}
+    - mode: 770
+    - require:
+      - pkg: owncloud_packages
+
 owncloud_packages:
   pkg.installed:
   - names: {{ server.pkgs }}

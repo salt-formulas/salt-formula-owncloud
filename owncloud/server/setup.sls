@@ -14,6 +14,7 @@ owncloud_install:
   - creates: /var/www/owncloud/config/config.php
   - require:
     - pkg: owncloud_packages
+    - file: owncloud_data
 
 owncloud_config:
   file.managed:
