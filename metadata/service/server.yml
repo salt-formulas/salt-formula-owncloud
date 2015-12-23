@@ -6,6 +6,7 @@ parameters:
       enabled: true
       addrepo: true
       data: /var/www/owncloud/data
+      updatechecker: false
       database:
         type: mysql
         name: owncloud
