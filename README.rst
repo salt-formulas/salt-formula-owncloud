@@ -65,6 +65,7 @@ Example reclass
       parameters:
         owncloud:
           server:
+            version: 8.1.5.2
             # pwgen -A 12 | head -1
             instanceid: iy5opia6chae
             # pwgen 31 | head -1
