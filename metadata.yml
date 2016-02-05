@@ -1,0 +1,6 @@
+name: "owncloud"
+version: "0.1"
+source: "https://github.com/tcpcloud/salt-formula-owncloud"
+dependencies:
+- name: apache
+  source: "https://github.com/tcpcloud/salt-formula-apache.git"
