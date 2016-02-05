@@ -1,5 +1,5 @@
 backup:
-  backupninja:
+  owncloud:
     fs_includes:
     - /srv/owncloud
     - /var/www/owncloud/data
