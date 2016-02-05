@@ -1,3 +1,5 @@
+classes:
+  - service.owncloud.support
 applications:
   - owncloud
 parameters:

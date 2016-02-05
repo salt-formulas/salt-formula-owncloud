@@ -1,0 +1,6 @@
+backup:
+  backupninja:
+    fs_includes:
+    - /srv/owncloud
+    - /var/www/owncloud/data
+    fs_excludes: []
