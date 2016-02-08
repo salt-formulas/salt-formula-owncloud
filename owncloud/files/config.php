@@ -1,4 +1,5 @@
-{%- from "owncloud/map.jinja" import server with context %}<?php
+{%- from "owncloud/map.jinja" import server with context -%}
+<?php
 $CONFIG = array (
   'instanceid' => '{{ server.instanceid }}',
   'passwordsalt' => '{{ server.passwordsalt }}',

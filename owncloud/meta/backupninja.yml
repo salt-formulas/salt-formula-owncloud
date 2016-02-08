@@ -1,6 +1,6 @@
+{%- from "owncloud/map.jinja" import server with context -%}
 backup:
   owncloud:
     fs_includes:
-    - /srv/owncloud
-    - /var/www/owncloud/data
+    - {{ server.data }}
     fs_excludes: []
