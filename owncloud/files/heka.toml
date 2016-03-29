@@ -12,5 +12,6 @@ filename = "lua_decoders/json.lua"
 [Sandbox_owncloud.config]
 type = "owncloud"
 payload = "message"
+severity = "level"
 timestamp = "time"
 map_fields = true
