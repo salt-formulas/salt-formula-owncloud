@@ -1,0 +1,16 @@
+[logstreamer_owncloud]
+type = "LogstreamerInput"
+log_directory = "/var/log"
+file_match = 'owncloud\.log\.?(?P<Index>\d+)?(\.gz)?'
+priority = ["^Index"]
+decoder = "Sandbox_owncloud"
+
+[Sandbox_owncloud]
+type = "SandboxDecoder"
+filename = "lua_decoders/json.lua"
+
+[Sandbox_owncloud.config]
+type = "owncloud"
+payload = "message"
+timestamp = "time"
+map_fields = true
