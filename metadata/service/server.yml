@@ -18,7 +18,7 @@ parameters:
         level: 1
         type: owncloud
         file: /var/log/owncloud.log
-        timezone: UTC
+        timezone: ${linux:system:timezone}
       mail:
         mode: php
         from: owncloud
