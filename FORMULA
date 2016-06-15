@@ -1,0 +1,8 @@
+name: owncloud
+os: Debian
+os_family: Debian
+version: 201606
+release: 1
+summary: owncloud Salt formula
+description: Install and configure owncloud server and relay.
+top_level_dir: owncloud
