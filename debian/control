@@ -11,6 +11,6 @@ Vcs-Git: https://github.com/tcpcloud/salt-formula-owncloud.git
 
 Package: salt-formula-owncloud
 Architecture: all
-Depends: ${misc:Depends}, salt-master, reclass, salt-formula-apache
+Depends: ${misc:Depends}, salt-formula-apache
 Description: owncloud Salt formula
  Install and configure owncloud server and relay.
